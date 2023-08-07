@@ -55,7 +55,7 @@ async def listen_to_blocks():
             withdrawal_data = {
                 "address": withdrawal["address"],
                 "amount": int(withdrawal["amount"]),
-                "index": int(withdrawal["index"]),
+                "withdrawal_index": int(withdrawal["index"]),
                 "validatorIndex": int(withdrawal["validatorIndex"]),
             }
             withdrawals_list.append(withdrawal_data)

@@ -21,97 +21,97 @@
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15043362,
-        "index": 12865153,
+        "withdrawal_index": 12865153,
         "validatorIndex": 147872
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15063250,
-        "index": 12865154,
+        "withdrawal_index": 12865154,
         "validatorIndex": 147874
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15049894,
-        "index": 12865155,
+        "withdrawal_index": 12865155,
         "validatorIndex": 147875
       },
       {
         "address": "0xbF85Eb89B26F48AED0b4c28Cf1281381e72BDeC1",
         "amount": 15047684,
-        "index": 12865156,
+        "withdrawal_index": 12865156,
         "validatorIndex": 147876
       },
       {
         "address": "0xbF85Eb89B26F48AED0b4c28Cf1281381e72BDeC1",
         "amount": 15055146,
-        "index": 12865157,
+        "withdrawal_index": 12865157,
         "validatorIndex": 147877
       },
       {
         "address": "0xbF85Eb89B26F48AED0b4c28Cf1281381e72BDeC1",
         "amount": 15039034,
-        "index": 12865158,
+        "withdrawal_index": 12865158,
         "validatorIndex": 147878
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 14987025,
-        "index": 12865159,
+        "withdrawal_index": 12865159,
         "validatorIndex": 147879
       },
       {
         "address": "0xbF85Eb89B26F48AED0b4c28Cf1281381e72BDeC1",
         "amount": 15059249,
-        "index": 12865160,
+        "withdrawal_index": 12865160,
         "validatorIndex": 147881
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15075324,
-        "index": 12865161,
+        "withdrawal_index": 12865161,
         "validatorIndex": 147882
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15058010,
-        "index": 12865162,
+        "withdrawal_index": 12865162,
         "validatorIndex": 147883
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15042717,
-        "index": 12865163,
+        "withdrawal_index": 12865163,
         "validatorIndex": 147884
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15074721,
-        "index": 12865164,
+        "withdrawal_index": 12865164,
         "validatorIndex": 147885
       },
       {
         "address": "0xbF85Eb89B26F48AED0b4c28Cf1281381e72BDeC1",
         "amount": 15026953,
-        "index": 12865165,
+        "withdrawal_index": 12865165,
         "validatorIndex": 147886
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15076288,
-        "index": 12865166,
+        "withdrawal_index": 12865166,
         "validatorIndex": 147887
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15030858,
-        "index": 12865167,
+        "withdrawal_index": 12865167,
         "validatorIndex": 147888
       },
       {
         "address": "0x5363AEDb6Dcd082C77642D5Bf663Eabe916031f7",
         "amount": 15067130,
-        "index": 12865168,
+        "withdrawal_index": 12865168,
         "validatorIndex": 147889
       }
     ],
