@@ -34,7 +34,6 @@ async def listen_to_blocks():
                 "input": txn_data['input'].hex(),
                 "maxFeePerGas": txn_data['maxFeePerGas'] if 'maxFeePerGas' in txn_data else None,
                 "maxPriorityFeePerGas": txn_data['maxPriorityFeePerGas'] if 'maxPriorityFeePerGas' in txn_data else None,
-                # "maxPriorityFeePerGas": txn_data['maxPriorityFeePerGas'],
                 "nonce": txn_data['nonce'],
                 "r": txn_data['r'].hex(),
                 "s": txn_data['s'].hex(),
