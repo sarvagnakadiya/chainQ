@@ -53,7 +53,7 @@ async def listen_to_blocks():
         block = provider.eth.get_block(block_number)
         # print(block)
 
-        """ log = provider.eth.get_transaction_receipt(block['transactions'][2])
+        log = provider.eth.get_transaction_receipt(block['transactions'][2])
         print("logs are===============================================================================")
         print(log)
         processed_log = {
@@ -70,24 +70,14 @@ async def listen_to_blocks():
         print("===============================================================================")
         print(processed_log)
 
-        print("=============================finished==================================================") """
+        print("=============================finished==================================================")
         
         alltx = block["transactions"]
 
         txDetails = []
         for txn_hash in alltx:
             txn_data = provider.eth.get_transaction(txn_hash)
-            log = provider.eth.get_transaction_receipt(txn_data)
-            # processed_log = {
-            #     'transactionHash': log['transactionHash'].hex(),
-            #     "address": log['address'] if 'address' in log else None,
-            #     'blockHash': log['blockHash'].hex(),
-            #     'blockNumber': log['blockNumber'],
-            #     "data": log['data'] if 'data' in log else None,
-            #     "logIndex": log['logIndex'] if 'logIndex' in log else None,
-            #     "removed": log['removed'] if 'removed' in log else None,
-            #     'transactionIndex': log['transactionIndex']
-            # }
+            log_data = provider.eth.get_transaction_receipt(txn_data)
             transaction_data = {
                 "transactionHash": txn_hash.hex(),
                 "blockHash": txn_data["blockHash"].hex(),
@@ -108,7 +98,6 @@ async def listen_to_blocks():
                 "type": txn_data['type'],
                 "v": txn_data['v'],
                 "value": txn_data['value'], 
-                "logs": log,
                 "types": classify_transaction(txn_data['input'].hex(), txn_data['to'], txn_data['value'])
             }
             print(transaction_data)
@@ -122,7 +111,7 @@ async def listen_to_blocks():
             withdrawal_data = {
                 "address": withdrawal["address"],
                 "amount": int(withdrawal["amount"]),
-                "withdrawal_index": int(withdrawal["index"]),
+                "index": int(withdrawal["index"]),
                 "validatorIndex": int(withdrawal["validatorIndex"]),
             }
             withdrawals_list.append(withdrawal_data)
