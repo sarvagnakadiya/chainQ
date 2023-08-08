@@ -10,20 +10,86 @@ outputFilePath = "blocks.json"
 provider = Web3(Web3.HTTPProvider(rpcUrl))
 
 
+def classify_transaction(input_data, to_address, value):
+    transaction_types = []
+
+    # Check for Native Token Transfer
+    if input_data == '0x' and to_address != '0x' and int(value, 16) > 0:
+        transaction_types.append("Native Token Transfer")
+
+    # Check for ERC20 Transfer
+    if input_data.startswith('0xa9059cbb'):
+        transaction_types.append("ERC20 Transfer")
+
+    # Check for Contract Interaction
+    if input_data.startswith('0x') and to_address != '0x':
+        transaction_types.append("Contract Interaction")
+
+    # Check for Contract Deployed
+    if input_data == '0x' and to_address != '0x':
+        transaction_types.append("Contract Deployed")
+
+    # Check for Minting NFT
+    if input_data.startswith('0x06fdde03'):
+        transaction_types.append("Minting NFT")
+
+    # Check for Transfer Minting
+    if input_data.startswith('0xa9785013'):
+        transaction_types.append("Transfer Minting")
+
+    # Check for Minting
+    if input_data.startswith('0x') and len(transaction_types) == 0:
+        transaction_types.append("Minting")
+
+    # If none of the above patterns match, classify as Unknown
+    if len(transaction_types) == 0:
+        transaction_types.append("Unknown")
+
+    return transaction_types
+
 async def listen_to_blocks():
     try:
         block_number = 17839015
         block = provider.eth.get_block(block_number)
         # print(block)
+
+        """ log = provider.eth.get_transaction_receipt(block['transactions'][2])
+        print("logs are===============================================================================")
+        print(log)
+        processed_log = {
+            'transactionHash': log['transactionHash'].hex(),
+            "address": log['address'] if 'address' in log else None,
+            'blockHash': log['blockHash'].hex(),
+            'blockNumber': log['blockNumber'],
+            "data": log['data'] if 'data' in log else None,
+            "logIndex": log['logIndex'] if 'logIndex' in log else None,
+            "removed": log['removed'] if 'removed' in log else None,
+            'topics': [topic.hex() for topic in log['topics']] if 'topics' in log else None,
+            'transactionIndex': log['transactionIndex']
+        }
+        print("===============================================================================")
+        print(processed_log)
+
+        print("=============================finished==================================================") """
         
-
-
         alltx = block["transactions"]
 
         txDetails = []
         for txn_hash in alltx:
             txn_data = provider.eth.get_transaction(txn_hash)
+            log = provider.eth.get_transaction_receipt(txn_data)
+            # processed_log = {
+            #     'transactionHash': log['transactionHash'].hex(),
+            #     "address": log['address'] if 'address' in log else None,
+            #     'blockHash': log['blockHash'].hex(),
+            #     'blockNumber': log['blockNumber'],
+            #     "data": log['data'] if 'data' in log else None,
+            #     "logIndex": log['logIndex'] if 'logIndex' in log else None,
+            #     "removed": log['removed'] if 'removed' in log else None,
+            #     'transactionIndex': log['transactionIndex']
+            # }
             transaction_data = {
+                "transactionHash": txn_hash.hex(),
                 "blockHash": txn_data["blockHash"].hex(),
                 "blockNumber": txn_data["blockNumber"],
                 "chainId": txn_data['chainId'],
@@ -42,11 +108,13 @@ async def listen_to_blocks():
                 "type": txn_data['type'],
                 "v": txn_data['v'],
                 "value": txn_data['value'], 
+                "logs": log,
+                "types": classify_transaction(txn_data['input'].hex(), txn_data['to'], txn_data['value'])
             }
             print(transaction_data)
             txDetails.append(transaction_data)
         
-        # txDetails.append(dict(txn_data))  # Convert AttributeDict to regular dictionary
+       
 
 
         withdrawals_list = []
@@ -82,7 +150,7 @@ async def listen_to_blocks():
             "gasLimit": int(block["gasLimit"]),
             "gasUsed": int(block["gasUsed"]),
             "extraData": block["extraData"].hex(),
-            "txDetails": txDetails,
+            # "txDetails": txDetails,
         }
 
         print("---------------------------------------------------------------------------")
