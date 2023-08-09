@@ -7,7 +7,6 @@ load_dotenv()
 
 rpcUrl = os.getenv("RPC_URL")
 
-
 # Connect to the Ethereum node
 provider = Web3(Web3.HTTPProvider(rpcUrl))
 
@@ -78,11 +77,11 @@ CREATE TABLE IF NOT EXISTS block_data (
 
 conn.commit()
 conn.close()
-
+print("tables created")
 
 async def listen_to_blocks():
     try:
-        block_number = 37808231
+        block_number = 17839015
         block = provider.eth.get_block(block_number)
         # print(block)
 
@@ -112,6 +111,7 @@ async def listen_to_blocks():
                 "value": str(txn_data['value']),  # Convert to string to handle large values
             }
             # print(transaction_data)
+            # print("block data is loading...")
             txDetails.append(transaction_data)
 
         withdrawals_list = []
@@ -151,6 +151,7 @@ async def listen_to_blocks():
         }
 
         conn = sqlite3.connect("chainQ.db")
+        print("db created")
         cursor = conn.cursor()
 
         # Insert data into the `transaction_data` table
@@ -177,7 +178,8 @@ async def listen_to_blocks():
                 txn["v"],
                 txn["value"],
             ))
-
+            
+            
         # Insert data into the `withdrawal_data` table
         for withdrawal in withdrawals_list:
             cursor.execute("""
@@ -223,7 +225,7 @@ async def listen_to_blocks():
 
         conn.commit()
         conn.close()
-
+        print("values inserted")
     except Exception as e:
         print("Error:", e)
 
