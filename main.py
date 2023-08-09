@@ -12,49 +12,50 @@ outputFilePath = "blocks.json"
 provider = Web3(Web3.HTTPProvider(rpcUrl))
 
 
-def classify_transaction(input_data, to_address, value):
-    transaction_types = []
+# def classify_transaction(input_data, to_address, value):
+#     transaction_types = []
 
-    try:
-        to_address = Web3.to_checksum_address(to_address)
-        contract = None
+#     try:
+#         to_address = Web3.to_checksum_address(to_address)
+#         contract = None
 
-        if input_data == "0x" and value == 0:
-            transaction_types.append("Native Token Transfer")
-        else:
-            # Try to decode input data to identify the function being called
-            method_signature = input_data[:10].hex()
+#         if input_data == "0x" and value == 0:
+#             transaction_types.append("Native Token Transfer")
+#         else:
+#             # Try to decode input data to identify the function being called
+#             method_signature = input_data[:10].hex()
 
-            # Create contract instances using contract ABIs
-            erc20 = provider.eth.contract(address=to_address, abi=erc20_abi)
-            erc721 = provider.eth.contract(address=to_address, abi=erc721_abi)
-            erc1155 = provider.eth.contract(address=to_address, abi=erc1155_abi)
+#             # Create contract instances using contract ABIs
+#             erc20 = provider.eth.contract(address=to_address, abi=erc20_abi)
+#             erc721 = provider.eth.contract(address=to_address, abi=erc721_abi)
+#             erc1155 = provider.eth.contract(address=to_address, abi=erc1155_abi)
 
-            if method_signature == erc20.functions.transfer.signature:
-                transaction_types.append("ERC20 Transfer")
-            elif method_signature == erc20.functions.mint.signature:
-                transaction_types.append("ERC20 Mint")
-            elif method_signature == erc721.functions.transferFrom.signature:
-                transaction_types.append("ERC721 Transfer")
-            elif method_signature == erc721.functions.mint.signature:
-                transaction_types.append("ERC721 Mint")
-            elif method_signature == erc1155.functions.safeTransferFrom.signature:
-                transaction_types.append("ERC1155 Transfer")
-            elif method_signature == erc1155.functions.safeMint.signature:
-                transaction_types.append("ERC1155 Mint")
-            else:
-                transaction_types.append("Unknown")
+#             if method_signature == erc20.functions.transfer.signature:
+#                 transaction_types.append("ERC20 Transfer")
+#             elif method_signature == erc20.functions.mint.signature:
+#                 transaction_types.append("ERC20 Mint")
+#             elif method_signature == erc721.functions.transferFrom.signature:
+#                 transaction_types.append("ERC721 Transfer")
+#             elif method_signature == erc721.functions.mint.signature:
+#                 transaction_types.append("ERC721 Mint")
+#             elif method_signature == erc1155.functions.safeTransferFrom.signature:
+#                 transaction_types.append("ERC1155 Transfer")
+#             elif method_signature == erc1155.functions.safeMint.signature:
+#                 transaction_types.append("ERC1155 Mint")
+#             else:
+#                 transaction_types.append("Unknown")
 
-    except Exception as e:
-        print("Error classifying transaction:", e)
+#     except Exception as e:
+#         print("Error classifying transaction:", e)
 
-    return transaction_types
+#     return transaction_types
 
 async def listen_to_blocks():
     try:
-        block_number = 17839015
+        block_number = 13062716
+        	# 37808231
         block = provider.eth.get_block(block_number)
-        # print(block)
+        print(block)
 
         # log = provider.eth.get_transaction_receipt(block['transactions'][2])
         # print("logs are===============================================================================")
@@ -80,12 +81,15 @@ async def listen_to_blocks():
         txDetails = []
         for txn_hash in alltx:
             txn_data = provider.eth.get_transaction(txn_hash)
+            print(txn_data)
+            print("=-=-=---=-=-=-=-=-=-=-=-=-=-=-=-=-")
             # log_data = provider.eth.get_transaction_receipt(txn_data)
             transaction_data = {
                 "transactionHash": txn_hash.hex(),
                 "blockHash": txn_data["blockHash"].hex(),
                 "blockNumber": txn_data["blockNumber"],
-                "chainId": txn_data['chainId'],
+                # "chainId": txn_data['chainId'],
+                "chainId": txn_data['chainId'] if 'chainId' in txn_data else None,
                 "from": txn_data["from"],
                 "gas": txn_data['gas'],
                 "gasPrice": txn_data['gasPrice'],
@@ -101,23 +105,23 @@ async def listen_to_blocks():
                 "type": txn_data['type'],
                 "v": txn_data['v'],
                 "value": txn_data["value"],
-                "types": classify_transaction(txn_data['input'].hex(), txn_data['to'], txn_data['value'])
+                # "types": classify_transaction(txn_data['input'].hex(), txn_data['to'], txn_data['value'])
             }
-            print(transaction_data)
+            # print(transaction_data)
             txDetails.append(transaction_data)
         
        
 
 
-        withdrawals_list = []
-        for withdrawal in block["withdrawals"]:
-            withdrawal_data = {
-                "address": withdrawal["address"],
-                "amount": int(withdrawal["amount"]),
-                "index": int(withdrawal["index"]),
-                "validatorIndex": int(withdrawal["validatorIndex"]),
-            }
-            withdrawals_list.append(withdrawal_data)
+        # withdrawals_list = []
+        # for withdrawal in block["withdrawals"]:
+        #     withdrawal_data = {
+        #         "address": withdrawal["address"],
+        #         "amount": int(withdrawal["amount"]),
+        #         "index": int(withdrawal["index"]),
+        #         "validatorIndex": int(withdrawal["validatorIndex"]),
+        #     }
+        #     withdrawals_list.append(withdrawal_data)
 
         block_data = {
             "blockHash": block["hash"].hex(),
@@ -137,8 +141,8 @@ async def listen_to_blocks():
             "totalDifficulty": block['totalDifficulty'],
             "transactionsRoot": block['transactionsRoot'].hex(),
             "uncles": block['uncles'],
-            "withdrawals": withdrawals_list,
-            "withdrawalsRoot": block['withdrawalsRoot'].hex(),
+            # "withdrawals": withdrawals_list,
+            # "withdrawalsRoot": block['withdrawalsRoot'].hex(),
             "gasLimit": int(block["gasLimit"]),
             "gasUsed": int(block["gasUsed"]),
             "extraData": block["extraData"].hex(),
@@ -146,7 +150,7 @@ async def listen_to_blocks():
         }
 
         print("---------------------------------------------------------------------------")
-        print(block_data)
+        # print(block_data)
 
         existingData = []
         if os.path.exists(outputFilePath) and os.path.getsize(outputFilePath) > 0:

@@ -2,6 +2,7 @@ import asyncio
 from web3 import Web3
 import sqlite3
 from dotenv import load_dotenv
+import os
 load_dotenv()
 
 rpcUrl = os.getenv("RPC_URL")
@@ -81,7 +82,7 @@ conn.close()
 
 async def listen_to_blocks():
     try:
-        block_number = 17839015
+        block_number = 37808231
         block = provider.eth.get_block(block_number)
         # print(block)
 
