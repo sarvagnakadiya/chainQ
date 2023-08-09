@@ -52,7 +52,9 @@ provider = Web3(Web3.HTTPProvider(rpcUrl))
 
 async def listen_to_blocks():
     try:
-        block_number = 13062716
+        block_number = 17839015
+        # 13062716
+
         	# 37808231
         block = provider.eth.get_block(block_number)
         print(block)
