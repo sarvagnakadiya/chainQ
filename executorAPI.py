@@ -8,7 +8,7 @@ def get_answer_route():
     try:
         user_prompt = request.json['user_prompt']  # Assuming the input is sent as JSON in the request body
         
-        answer = get_answer(user_prompt) 
+        answer = get_answer(user_prompt)
         return jsonify({'answer': answer})
     except Exception as e:
         return jsonify({'error': str(e)})
