@@ -1,8 +1,11 @@
 import asyncio
 from web3 import Web3
 import sqlite3
+from dotenv import load_dotenv
+load_dotenv()
 
-rpcUrl = "https://eth-mainnet.g.alchemy.com/v2/40NCT0StPsfEZkWeZu8-E4ByKln3pSCW"
+rpcUrl = os.getenv("RPC_URL")
+
 
 # Connect to the Ethereum node
 provider = Web3(Web3.HTTPProvider(rpcUrl))
