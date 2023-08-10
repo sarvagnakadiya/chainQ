@@ -3,8 +3,14 @@ import "../style/main.scss";
 import Navbar from "./Navbar";
 import hero from "../assets/hero.png";
 import arrow from "../assets/Arrow.png";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
+  const getStarted = () => {
+    navigate("./chat-dashboard");
+  };
   return (
     <>
       <div className="main-div-landing">
@@ -20,7 +26,9 @@ function Home() {
               Analyze Blockchain Data"
             </p>
 
-            <button className="try-btn">Try it first!</button>
+            <button className="try-btn" onClick={() => getStarted()}>
+              Try it first!
+            </button>
           </div>
           <div className="hero-right">
             <div className="hero-right-inside">
