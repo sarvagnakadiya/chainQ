@@ -8,7 +8,7 @@ load_dotenv()
 rpcUrl = os.getenv("RPC_URL")
 
 # Connect to the Ethereum node
-provider = Web3(Web3.HTTPProvider("https://opt-mainnet.g.alchemy.com/v2/cfV5n_qtluCSUthXagbF9heGZBi_PZKW"))
+provider = Web3(Web3.HTTPProvider(rpcUrl))
 
 # Create tables for `transaction_data`, `withdrawal_data`, and `block_data`
 conn = sqlite3.connect("chainQ.db")
