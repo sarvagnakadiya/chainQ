@@ -4,6 +4,7 @@ import "../style/main.scss";
 import EmptyComponent from "./EmptyComponent";
 import ChatLog from "./ChatLog";
 import MessageHistory from "./MessageHistory";
+import send from "../assets/send.png";
 
 const Dashboard = () => {
   const [newMessage, setNewMessage] = useState("");
@@ -20,14 +21,25 @@ const Dashboard = () => {
     }
   }, [messages]);
 
+  // const sendMessage = () => {
+  //   const userMessage = {
+  //     id: uuidv4(),
+  //     sender: "user",
+  //     text: newMessage,
+  //   };
+  //   setMessages((prevMessages) => [...prevMessages, userMessage]);
+  //   setNewMessage("");
+  // };
   const sendMessage = () => {
-    const userMessage = {
-      id: uuidv4(),
-      sender: "user",
-      text: newMessage,
-    };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
-    setNewMessage("");
+    if (newMessage.trim() !== "") {
+      const userMessage = {
+        id: uuidv4(),
+        sender: "user",
+        text: newMessage,
+      };
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
+      setNewMessage("");
+    }
   };
 
   const simulateBotResponse = () => {
@@ -69,6 +81,13 @@ const Dashboard = () => {
 
   const isSendButtonDisabled = newMessage === "";
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage();
+    }
+  };
+
   return (
     <div className="chat-app-container">
       <MessageHistory
@@ -91,10 +110,15 @@ const Dashboard = () => {
               type="text"
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
+              onKeyDown={handleKeyPress}
               placeholder="Type your message..."
             />
-            <button onClick={sendMessage} disabled={isSendButtonDisabled}>
-              <img src="./send.png" style={{ width: "20px" }}></img>
+            <button
+              onClick={sendMessage}
+              disabled={isSendButtonDisabled}
+              className="send-btn"
+            >
+              <img src={send} style={{ width: "20px" }}></img>
             </button>
           </div>
         </div>

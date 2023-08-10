@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import del from "../assets/delete.png";
 
 const MessageHistory = ({
   messages,
@@ -23,7 +24,7 @@ const MessageHistory = ({
               className="delete-icon"
               onClick={() => handleDeleteMessage(message.id)}
             >
-              <img src="./delete.png" style={{ width: "20px" }}></img>
+              <img src={del} style={{ width: "20px" }}></img>
             </span>
           </div>
         ))}

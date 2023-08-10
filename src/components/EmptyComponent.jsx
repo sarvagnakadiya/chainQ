@@ -10,7 +10,7 @@ function EmptyComponent() {
           <p
             style={{
               border: "1px solid lightgray",
-              padding: "10px",
+              padding: "20px",
               textAlign: "justify",
               borderRadius: "10px",
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
@@ -22,7 +22,7 @@ function EmptyComponent() {
           <p
             style={{
               border: "1px solid lightgray",
-              padding: "10px",
+              padding: "20px",
               textAlign: "justify",
               borderRadius: "10px",
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
@@ -34,7 +34,7 @@ function EmptyComponent() {
           <p
             style={{
               border: "1px solid lightgray",
-              padding: "10px",
+              padding: "20px",
               borderRadius: "10px",
               textAlign: "justify",
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
@@ -46,8 +46,8 @@ function EmptyComponent() {
         <div style={{ width: "40%", display: "flex", flexDirection: "column" }}>
           <p
             style={{
-              border: "1px solid lightgray",
-              padding: "10px",
+              border: "1px solid white",
+              padding: "20px",
               borderRadius: "10px",
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
               textAlign: "justify",
@@ -59,7 +59,7 @@ function EmptyComponent() {
           <p
             style={{
               border: "1px solid lightgray",
-              padding: "10px",
+              padding: "20px",
               textAlign: "justify",
               borderRadius: "10px",
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
@@ -71,7 +71,7 @@ function EmptyComponent() {
           <p
             style={{
               border: "1px solid lightgray",
-              padding: "10px",
+              padding: "20px",
               textAlign: "justify",
               borderRadius: "10px",
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",

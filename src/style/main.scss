@@ -9,19 +9,20 @@
   padding: 40px 10px;
   overflow-y: auto;
   --tw-bg-opacity: 1;
-  background-color: rgba(32, 33, 35, var(--tw-bg-opacity));
+  background-color: #09090b;
 }
 
 .message {
   margin-bottom: 8px;
-  padding: 10px;
+  padding: 15px 10px;
+  border-bottom: 1px solid lightgray;
   display: flex;
   color: white;
   justify-content: space-between;
 }
 .message:hover {
   --tw-bg-opacity: 1;
-  background-color: rgba(52, 53, 65, var(--tw-bg-opacity));
+  background-color: rgba(32, 33, 35, var(--tw-bg-opacity));
   border-radius: 10px;
 }
 .timestamp {
@@ -39,14 +40,14 @@
   display: flex;
   flex-direction: column;
   --tw-bg-opacity: 1;
-  background-color: rgba(32, 33, 35, var(--tw-bg-opacity));
+  background-color: #09090b;
   padding: 10px;
   justify-content: space-between;
   overflow-y: auto;
   overflow-x: hidden;
 }
 .chat-box {
-  background-color: white;
+  background-color: rgba(32, 33, 35, var(--tw-bg-opacity));
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -61,14 +62,15 @@
 input {
   height: 40px;
   padding: 5px;
-  margin-bottom: 10px;
 }
 
 .chat-input {
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  margin: 20px auto;
   width: 70%;
+  border-radius: 10px;
+  background-color: #09090b;
   position: relative;
 }
 
@@ -76,17 +78,19 @@ input {
   flex: 1 1;
   height: 40px;
   padding: 5px;
-  border: 1px solid lightgray;
+  border: none;
+  color: rgba(245, 240, 240, 0.707);
   outline: none;
   font-size: 16px;
+  background-color: transparent;
   border-color: none;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 5px 45px;
-  color: black;
+  color: li;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
 }
 
-button {
+.send-btn {
   width: 40px;
   height: 40px;
   color: #fff;
@@ -120,9 +124,7 @@ button {
   text-align: left;
   color: black;
 }
-.chat-msg-response {
-  background-color: rgb(0 0 0 / 13%);
-}
+
 .chat-msg-center {
   padding: 22px 40px;
   display: flex;
@@ -135,10 +137,11 @@ button {
   padding: 0px 40px;
   word-wrap: break-word;
   max-width: 100%;
+  color: #ffffff;
 }
 .dash-title {
   text-align: center;
-  color: darkorange;
+  color: white;
   height: 20vh;
   display: flex;
   align-items: center;
@@ -149,27 +152,192 @@ button {
   display: flex;
   align-items: flex-start;
   max-width: 100%;
-  // color: white;
+  color: rgba(245, 240, 240, 0.707);
   width: 100%;
   justify-content: space-around;
 }
 .chat-log-title {
-  text-align: center;
+  text-align: right;
+  padding: 30px;
   font-size: 20px;
-  color: darkorange;
+  width: 150px;
 }
 .chat-avatar-user {
-  background: black;
   padding: 5px;
   border-radius: 50px;
+  background-color: white;
 }
 .chat-avatar-response {
-  background: black;
   padding: 5px;
   border-radius: 50px;
 }
 .delete-icon {
-  background: white;
   padding: 5px;
   border-radius: 10px;
 }
+
+// .............home css..................
+.main-div-landing {
+  background-color: #202123;
+  min-height: 100vh;
+}
+.home-left-section {
+  width: 50%;
+  margin-left: 100px;
+  display: flex;
+  text-align: initial;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.hero-right {
+  width: 50%;
+}
+.hero-right-bg1 {
+  width: 80%;
+}
+
+.landing-flex {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 80vh;
+  justify-content: space-between;
+  width: 85%;
+}
+.home-title {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  width: 90%;
+  margin: 0;
+}
+
+.home-desc {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 20px 10px;
+  color: white;
+  margin: 0;
+  width: 70%;
+  line-height: 25px;
+}
+.start-btn-flex {
+  padding: 20px 40px;
+  border-radius: 50px;
+  width: 30px;
+}
+.footer-flex {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  padding: 20px 0px;
+
+  bottom: 0;
+  // background-image: url("../assets/footer.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
+  z-index: 1;
+  justify-content: space-around;
+}
+.try-btn {
+  background-color: #202123;
+  border: 1px solid #246aee;
+  color: white;
+  width: 30%;
+  padding: 20px;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: rgb(42, 35, 207) 0px 4px 24px -6px;
+  transition: all 200ms ease 0s;
+}
+// ..............navbar css...............
+
+.navbar {
+  padding: 50px 30px;
+  display: flex;
+  z-index: 0;
+
+  align-items: center;
+  justify-content: space-between;
+}
+.logo h1 {
+  line-height: 2;
+  font-size: 30px;
+  text-align: left;
+  flex: 1 1;
+  font-weight: 700;
+}
+
+.extension-btn {
+  padding: 20px;
+  /* width: 30%; */
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+
+  background: #ffffff1f;
+  border-radius: 15px;
+
+  position: relative;
+}
+@media (max-width: 768px) {
+  /* .connect {
+      visibility: hidden;
+    } */
+
+  .header {
+    .navbar {
+      justify-content: space-around;
+      .logo h1 {
+        line-height: 1;
+        font-size: 10px;
+      }
+      .navmenu {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top: 2px solid rgb(211, 211, 211);
+        border-bottom: 2px solid rgb(211, 211, 211);
+        z-index: 100;
+        position: fixed;
+        left: -100%;
+        top: 3.3rem;
+        flex-direction: column;
+        background: rgb(18, 18, 18);
+        width: 50%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+
+        .navitem {
+          margin: 2.5rem 0;
+        }
+      }
+      .navmenu.active {
+        left: 0;
+      }
+      .hamburger {
+        /* margin-left: auto; */
+        display: block;
+        cursor: pointer;
+      }
+
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+}
+// .....................animation

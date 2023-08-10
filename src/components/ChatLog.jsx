@@ -1,9 +1,15 @@
 import React from "react";
+import icon from "../assets/favicon.png";
+import logo from "../assets/logo.png";
+import user from "../assets/user.jpg";
 
 const ChatLog = ({ messages }) => {
   return (
     <div className="chat-log-main">
-      <h1 className="chat-log-title">ChainQ</h1>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <img className="chat-log-title" src={logo} />
+      </div>
+
       <div className="chat-log">
         {messages.map((message) => (
           <div
@@ -20,18 +26,10 @@ const ChatLog = ({ messages }) => {
               >
                 {message.sender === "user" ? (
                   /* User avatar image */
-                  <img
-                    src="./profile.jpg"
-                    alt="User Avatar"
-                    style={{ width: "30px" }}
-                  />
+                  <img src={user} alt="User Avatar" style={{ width: "30px" }} />
                 ) : (
                   /* Bot avatar image */
-                  <img
-                    src="./AI.png"
-                    alt="Bot Avatar"
-                    style={{ width: "30px" }}
-                  />
+                  <img src={icon} alt="Bot Avatar" style={{ width: "30px" }} />
                 )}
               </div>
               <div className="chat-msg">{message.text}</div>
