@@ -79,6 +79,7 @@ conn.commit()
 conn.close()
 print("tables created")
 
+
 async def listen_to_blocks():
     try:
         block_number = 17839015

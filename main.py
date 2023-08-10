@@ -12,45 +12,62 @@ outputFilePath = "blocks.json"
 provider = Web3(Web3.HTTPProvider(rpcUrl))
 
 
-# def classify_transaction(input_data, to_address, value):
-#     transaction_types = []
+def classify_transaction(input_data, to_address, value):
+    # Check if the 'to' field is None or an Ethereum address (transfer)
+    if to_address is None or to_address == "0x":
+        if int(value, 16) > 0:  # Non-zero value indicates Ether transfer
+            return "Ether Transfer"
+        else:
+            return "Unknown"  # No value indicates unknown transaction type
 
-#     try:
-#         to_address = Web3.to_checksum_address(to_address)
-#         contract = None
+    # Convert input_data to bytes
+    input_bytes = bytes.fromhex(input_data[2:])  # Remove the '0x' prefix
 
-#         if input_data == "0x" and value == 0:
-#             transaction_types.append("Native Token Transfer")
-#         else:
-#             # Try to decode input data to identify the function being called
-#             method_signature = input_data[:10].hex()
+    # Check if the input data is non-empty (contract interaction)
+    if input_bytes:
+        # Token Transfers (ERC-20, ERC-721, ERC-1155)
+        if input_bytes[:4] == b'\xa9\x05\x9c\xbb':  # ERC-20 transfer function selector
+            return "ERC20 Transfer"
+        elif input_bytes[:4] == b'\x23\xb8\x72\xdd':  # ERC-721 transfer function selector
+            return "ERC721 Transfer"
+        elif input_bytes[:4] == b'\xd9\xb6\xef\xce':  # ERC-1155 safeTransferFrom function selector
+            return "ERC1155 Transfer"
+        
+        # Contract Deployment
+        if to_address == "0x":
+            return "Contract Deployment"
+        
+        # Token Approvals (ERC-20)
+        if input_bytes[:10] == b'\x09\x5e\xa7\xb3':
+            return "Token Approval"
+        
+        # Token Minting/Burning (Example prefixes, adjust as needed)
+        if input_bytes[:4] == b'\x12\x34\x56\x78':
+            return "Token Minting"
+        if input_bytes[:4] == b'\x87\x65\x43\x21':
+            return "Token Burning"
+        
+        # Contract Self-Destruction
+        if input_bytes[:4] == b'\x30\xab\x71\x00':
+            return "Contract Self-Destruction"
 
-#             # Create contract instances using contract ABIs
-#             erc20 = provider.eth.contract(address=to_address, abi=erc20_abi)
-#             erc721 = provider.eth.contract(address=to_address, abi=erc721_abi)
-#             erc1155 = provider.eth.contract(address=to_address, abi=erc1155_abi)
+        # Other Contract Interactions
+        return "Contract Interaction"
+    
+    return "Unknown"  # Default for unknown cases
 
-#             if method_signature == erc20.functions.transfer.signature:
-#                 transaction_types.append("ERC20 Transfer")
-#             elif method_signature == erc20.functions.mint.signature:
-#                 transaction_types.append("ERC20 Mint")
-#             elif method_signature == erc721.functions.transferFrom.signature:
-#                 transaction_types.append("ERC721 Transfer")
-#             elif method_signature == erc721.functions.mint.signature:
-#                 transaction_types.append("ERC721 Mint")
-#             elif method_signature == erc1155.functions.safeTransferFrom.signature:
-#                 transaction_types.append("ERC1155 Transfer")
-#             elif method_signature == erc1155.functions.safeMint.signature:
-#                 transaction_types.append("ERC1155 Mint")
-#             else:
-#                 transaction_types.append("Unknown")
 
-#     except Exception as e:
-#         print("Error classifying transaction:", e)
-
-#     return transaction_types
+async def get_latest_block_number():
+    try:
+        latest_block = provider.eth.get_block("latest")
+        print(latest_block["number"])
+        return latest_block["number"]
+    except Exception as e:
+        print("Error getting latest block number:", e)
+        return None
 
 async def listen_to_blocks():
+
     try:
         block_number = 17839015
         # 13062716
@@ -168,7 +185,8 @@ async def listen_to_blocks():
         print("Error:", e)
 
 async def main():
-    await listen_to_blocks()
+    # await listen_to_blocks()
+    await get_latest_block_number()
 
 if __name__ == "__main__":
     asyncio.run(main())
