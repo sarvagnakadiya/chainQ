@@ -13,6 +13,7 @@ provider = Web3(Web3.HTTPProvider(rpcUrl))
 # Create tables for `transaction_data`, `withdrawal_data`, and `block_data`
 conn = sqlite3.connect("chainQ.db")
 cursor = conn.cursor()
+print("db created")
 
 # Create a table for `transaction_data`
 cursor.execute("""
@@ -151,7 +152,6 @@ async def listen_to_blocks():
         }
 
         conn = sqlite3.connect("chainQ.db")
-        print("db created")
         cursor = conn.cursor()
 
         # Insert data into the `transaction_data` table
