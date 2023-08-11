@@ -303,8 +303,8 @@ async def listen_to_blocks():
 
 
 async def main():
-    # await listen_to_blocks()
-    await get_last_index()
+    await listen_to_blocks()
+    # await get_last_index()
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  
 from langchain import OpenAI, SQLDatabase
 from langchain.agents import create_sql_agent
 from langchain.agents.agent_toolkits import SQLDatabaseToolkit
@@ -31,6 +32,8 @@ def get_answer(user_prompt):
     except Exception as e:
         return str(e)
 app = Flask(__name__)
+
+CORS(app)  # Use CORS with your Flask app
 
 @app.route('/', methods=['GET'])
 def home():
