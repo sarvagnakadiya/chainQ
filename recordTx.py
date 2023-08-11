@@ -90,11 +90,38 @@ async def get_latest_block_number():
     except Exception as e:
         print("Error getting latest block number:", e)
         return None
+
+async def get_last_index():
+    try:
+        async with db_lock:
+            conn = sqlite3.connect("chainQ.db")
+            cursor = conn.cursor()
+
+            # Retrieve the latest added blockHeight from block_data table
+            cursor.execute("SELECT MAX(blockHeight) FROM block_data")
+            result = cursor.fetchone()
+            latest_block_height = result[0] if result[0] is not None else 0
+            print("latest block height (Actual fetched value from database):", latest_block_height)
+            latest_block_height+=1
+            print("latest block height (one incremented value that we want to start fetching data from):", latest_block_height)
+            print("latest block height type:", type(latest_block_height))
+            
+            
+            conn.close()
+            return latest_block_height 
     
+    except Exception as e:
+        print("Error getting last index:", e)
+        return None
+
 
 async def listen_to_blocks():
     try:
-        block_num = 108019738
+        block_num = await get_last_index()
+
+        if block_num == 1:
+            block_num = 108019738   #decided index to start fetching data from
+         
         latestBlock = await get_latest_block_number()
         while True:
             try:
@@ -276,7 +303,10 @@ async def listen_to_blocks():
 
 
 async def main():
-    await listen_to_blocks()
+    # await listen_to_blocks()
+    await get_last_index()
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
