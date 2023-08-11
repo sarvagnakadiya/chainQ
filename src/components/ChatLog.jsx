@@ -4,6 +4,7 @@ import logo from "../assets/logo.png";
 import user from "../assets/user.jpg";
 
 const ChatLog = ({ messages }) => {
+  console.log("this is from ChatLog" + messages);
   return (
     <div className="chat-log-main">
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
