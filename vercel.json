@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "routes": [
-    {
-      "src": "/api/endpoint1",
-      "dest": "./executorAPI.py"
-    }
-  ]
-}
