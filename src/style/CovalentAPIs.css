@@ -31,6 +31,11 @@
   margin-bottom: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
+  transition: border-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+.input-field.green-border {
+  border-color: green;
 }
 
 .fetch-button {
