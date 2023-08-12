@@ -61,11 +61,7 @@
   border-radius: 30px;
 }
 
-input {
-  height: 40px;
-  padding: 5px;
-  width: 220%;
-}
+
 
 // .chat-input {
 //   display: flex;
@@ -98,8 +94,8 @@ input {
 }
 
 
-
 input {
+  width: 220%;
   flex: 1 1;
   height: 40px;
   padding: 5px;
@@ -110,7 +106,7 @@ input {
   background-color: transparent;
   border-color: none;
   border-radius: 10px;
-  padding: 5px 45px;
+  padding: 5px 30px;
   color: li;
   // box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
 }

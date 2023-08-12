@@ -120,6 +120,7 @@ const Dashboard = () => {
         handleDeleteMessage={handleDeleteMessage}
         handleNewChatClick={handleNewChatClick}
         toggleCovalentAPIs={toggleCovalentAPIs}
+        covalentAPIsActive={showCovalentAPIs}
       />
 
       <div className="chat-box-main">
