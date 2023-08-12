@@ -1,73 +1,81 @@
-/* NewComponent.css */
-.container {
-  width: 70%;
-  margin: 0 auto;
-}
+/* Add your other styles here */
 
-.dash-title {
-  text-align: center;
-}
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.form-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid lightgray;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
-}
-
+/* Input fields */
 .input-field {
-  width: 100%;
+  display: inline-block;
+  width: calc(33.33% - 10px);
   padding: 10px;
   margin-bottom: 10px;
+  margin-right: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
-  transition: border-color 0.3s ease; /* Add transition for smooth effect */
+  transition: border-color 0.3s ease;
 }
 
 .input-field.green-border {
   border-color: green;
 }
 
+/* Network Dropdown */
+.network-dropdown {
+  width: calc(33.33% - 10px);
+  padding: 8px;
+  background-color: #202123;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  height: auto;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Fetch Buttons */
 .fetch-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 8px 16px;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  background-color: #202123;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.fetch-button:hover {
-  background-color: #0056b3;
+/* Table Container */
+.table-container {
+  max-width: calc(100% - 40px); /* Adjust margin */
+  overflow-x: auto;
+  margin: 20px;
 }
 
+/* Table */
 .balance-table {
-  width: 100%;
+  width: auto;
   border-collapse: collapse;
-  margin-top: 20px;
+  table-layout: fixed;
+  background-color: #202123;
+  color: white;
+  min-width: 100%;
+  white-space: nowrap; /* Prevent table cell content from wrapping */
+  overflow-x: scroll;
 }
 
-.balance-table th,
-.balance-table td {
-  border: 1px solid lightgray;
-  padding: 8px;
-  text-align: center;
-}
-
+/* Table Headings */
 .balance-table th {
-  background-color: #f4f4f4;
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #dddddd;
+  white-space: nowrap;
+  background-color: #282a2c; /* Slightly lighter than #202123 */
+  color: white;
 }
 
+/* Table Cells */
 .balance-table td {
-  font-weight: 500;
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #dddddd;
+  white-space: nowrap;
 }
+
+/* Add more of your styles as needed */

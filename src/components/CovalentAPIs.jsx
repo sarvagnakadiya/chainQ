@@ -129,7 +129,17 @@ function NewComponent() {
           {response.map((item, index) => (
             <tr key={index}>
               {Object.keys(item).map((key) => (
-                <td key={key}>{item[key]}</td>
+                <td key={key}>
+                  {Array.isArray(item[key]) ? (
+                    <ul>
+                      {item[key].map((subItem, subIndex) => (
+                        <li key={subIndex}>{JSON.stringify(subItem)}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    JSON.stringify(item[key])
+                  )}
+                </td>
               ))}
             </tr>
           ))}
