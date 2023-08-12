@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../style/main.scss";
-import EmptyComponent from "./EmptyComponent";
+// import CovalentAPIs from "./EmptyComponent";
 import CovalentAPIs from "./CovalentAPIs";
 import ChatLog from "./ChatLog";
 import MessageHistory from "./MessageHistory";
