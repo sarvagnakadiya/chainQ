@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../style/main.scss";
 import EmptyComponent from "./EmptyComponent";
+import CovalentAPIs from "./CovalentAPIs";
 import ChatLog from "./ChatLog";
 import MessageHistory from "./MessageHistory";
 import send from "../assets/send.png";
@@ -129,7 +130,7 @@ const Dashboard = () => {
       <div className="chat-box-main">
         <div className="chat-box">
           {messages.length === 0 || !showChatLog ? (
-            <EmptyComponent />
+            <CovalentAPIs />
           ) : (
             <>
               <ChatLog messages={messages} isLoading={isLoading} />
