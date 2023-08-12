@@ -4,7 +4,7 @@ import "../style/main.scss";
 function EmptyComponent() {
   return (
     <div style={{ width: "70%", margin: "0 auto" }}>
-      <h1 className="dash-title">Let's Explore The Power Of AI</h1>
+      <h1 className="dash-title">Let's Explore chainQ</h1>
       <div className="common-que-flex">
         <div style={{ width: "40%", flexDirection: "column", display: "flex" }}>
           <p
