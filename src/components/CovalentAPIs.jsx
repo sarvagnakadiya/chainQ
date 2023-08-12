@@ -26,7 +26,7 @@ function NewComponent() {
 
   return (
     <div className="container">
-      <h1 className="dash-title">Let's Explore The Power Of AI</h1>
+      <h1 className="dash-title">Let's Explore Covalent</h1>
       <div className="form-container">
         <div className="form-box">
           <input
