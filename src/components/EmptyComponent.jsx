@@ -4,7 +4,11 @@ import "../style/main.scss";
 function EmptyComponent() {
   return (
     <div style={{ width: "70%", margin: "0 auto" }}>
-      <h1 className="dash-title">Let's Explore chainQ</h1>
+      <h1 className="dash-title">
+        <div>
+          Let's Explore <span style={{ color: "green" }}>ChainQ</span>
+        </div>
+      </h1>
       <div className="common-que-flex">
         <div style={{ width: "40%", flexDirection: "column", display: "flex" }}>
           Prompts example
@@ -17,7 +21,7 @@ function EmptyComponent() {
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
             }}
           >
-            How many total transactions for block 108019738
+            How many total transactions for block 108019738?
           </p>
           <p
             style={{
@@ -28,7 +32,7 @@ function EmptyComponent() {
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
             }}
           >
-            And list all the transaction hashes
+            And list all the transaction hashes?
           </p>
           <p
             style={{
