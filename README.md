@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# ChainQ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://chain-q.vercel.app/
 
-## Available Scripts
+Welcome to ChainQ, your Natural Language Gateway to exploring the world of blockchains. The AI-Powered Blockchain Queries system is a revolutionary application designed to empower users with the ability to effortlessly navigate and comprehend blockchain data using everyday language. By harnessing the cutting-edge capabilities of advanced AI and NLP algorithms, ChainQ aims to demystify the process of querying Ethereum, Tron, and even the Optimism network, while seamlessly integrating data from Covalent APIs.
 
-In the project directory, you can run:
+## Key Features
 
-### `npm start`
+- **Conversational Data Exploration:** Leave behind the complexities of technical jargon. Engage with blockchain data naturally, using the language you speak.
+- **Real-Time Updates:** Stay up-to-date with instantaneous data feeds from Ethereum, Tron, and the Optimism network.
+- **User-Friendly Visualizations:** Gain invaluable insights through intuitive visual representations that simplify complex blockchain information.
+- **Secure and Private:** Your data's security is paramount. ChainQ employs industry-standard security measures to ensure your information remains confidential.
+- **Cross-Platform Compatibility:** Access the vast realm of blockchain data seamlessly across desktops, tablets, and smartphones.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How It Works
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ChainQ employs state-of-the-art Natural Language Processing (NLP) models, including technologies from OPEN AI, to seamlessly comprehend user queries. Simply articulate your questions, and watch as the system transforms your intent into actionable queries that interact with the Ethereum, Optimism blockchains. Real-time data is promptly retrieved from these networks, and the results are elegantly presented through an intuitive user interface that eliminates unnecessary complexities.
 
-### `npm test`
+https://github.com/sarvagnakadiya/chainQ/blob/main/api/recordTx.py
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Leveraging Optimism Network and Covalent APIs
 
-### `npm run build`
+We are excited to announce that ChainQ goes beyond traditional boundaries by indexing the Optimism network, providing you access to a wider array of blockchain data. Additionally, ChainQ has integrated Covalent APIs to further enhance your exploration capabilities, ensuring you receive comprehensive and up-to-the-minute insights.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Covalent: https://github.com/sarvagnakadiya/chainQ/blob/front-end/src/components/CovalentAPIs.jsx
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Optimism: https://github.com/sarvagnakadiya/chainQ/blob/83130b5d6bc3f5a91df20c9d3fbc03cf52ee2a4a/api/recordTx.py#L11C43-L11C43
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Our Vision and Commitment
 
-### `npm run eject`
+At ChainQ, our journey is just beginning. We envision a future where blockchain data exploration is an accessible endeavor for everyone, regardless of technical expertise. Our dedicated team has meticulously fine-tuned the underlying AI models, collaborating with Langchain and utilizing OPEN AI technologies to deliver an unparalleled user experience.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Get Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Embark on your journey of blockchain discovery with ChainQ. Visit our website [chain-q.vercel.app](chain-q.vercel.app/) to experience the power of natural language-driven blockchain data exploration like never before. Join us as we revolutionize the way you interact with blockchains.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_ChainQ - AI -Powered Blockchain Data Querying System_
