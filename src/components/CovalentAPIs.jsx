@@ -60,91 +60,98 @@ function NewComponent() {
     <div className="container">
       <h1 className="dash-title">Let's Explore The Power Of Covalent APIs</h1>
 
-      <input
-        type="text"
-        className={`input-field ${
-          hoveredButton === "fetchBalances" && "green-border"
-        }`}
-        placeholder="Enter ETH Address"
-        onChange={(e) => setWalletAddress(e.target.value)}
-      />
-      <input
-        type="text"
-        className={`input-field ${
-          hoveredButton === "getTokenPricings" && "green-border"
-        }`}
-        placeholder="Enter Quote Currency"
-        onChange={handleQuoteCurrencyChange}
-      />
-      <input
-        type="text"
-        className={`input-field ${
-          hoveredButton === "getTokenPricings" && "green-border"
-        }`}
-        placeholder="Enter Contract Address"
-        onChange={handleContractAddressChange}
-      />
-      <select
-        className="network-dropdown"
-        onChange={handleNetworkChange}
-        value={selectedNetwork}
-      >
-        <option value="matic-mainnet">Matic Mainnet</option>
-        <option value="eth-mainnet">Ethereum Mainnet</option>
-        {/* Add more options for other networks if needed */}
-      </select>
-      <button
-        className="fetch-button"
-        onClick={handleFetchBalances}
-        onMouseEnter={() => handleButtonHover("fetchBalances")}
-        onMouseLeave={() => handleButtonHover("")}
-      >
-        Fetch Balances
-      </button>
-      <button
-        className="fetch-button"
-        onClick={handleGetAllApproval}
-        onMouseEnter={() => handleButtonHover("fetchBalances")}
-        onMouseLeave={() => handleButtonHover("")}
-      >
-        Get All Approvals
-      </button>
-      <button
-        className="fetch-button"
-        onClick={handleGetTokenPricings}
-        onMouseEnter={() => handleButtonHover("getTokenPricings")}
-        onMouseLeave={() => handleButtonHover("")}
-      >
-        Get Token Pricings
-      </button>
+      <div className="input-row">
+        <input
+          type="text"
+          className={`input-field ${
+            hoveredButton === "fetchBalances" && "green-border"
+          }`}
+          placeholder="Enter ETH Address"
+          onChange={(e) => setWalletAddress(e.target.value)}
+        />
+        <input
+          type="text"
+          className={`input-field ${
+            hoveredButton === "getTokenPricings" && "green-border"
+          }`}
+          placeholder="Enter Quote Currency"
+          onChange={handleQuoteCurrencyChange}
+        />
+        <input
+          type="text"
+          className={`input-field ${
+            hoveredButton === "getTokenPricings" && "green-border"
+          }`}
+          placeholder="Enter Contract Address"
+          onChange={handleContractAddressChange}
+        />
+      </div>
 
-      <table className="balance-table">
-        <thead>
-          <tr>
-            {response.length > 0 &&
-              Object.keys(response[0]).map((key) => <th key={key}>{key}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {response.map((item, index) => (
-            <tr key={index}>
-              {Object.keys(item).map((key) => (
-                <td key={key}>
-                  {Array.isArray(item[key]) ? (
-                    <ul>
-                      {item[key].map((subItem, subIndex) => (
-                        <li key={subIndex}>{JSON.stringify(subItem)}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    JSON.stringify(item[key])
-                  )}
-                </td>
-              ))}
+      <div className="controls-row">
+        <select
+          className="network-dropdown"
+          onChange={handleNetworkChange}
+          value={selectedNetwork}
+        >
+          <option value="matic-mainnet">Matic Mainnet</option>
+          <option value="eth-mainnet">Ethereum Mainnet</option>
+          {/* Add more options for other networks if needed */}
+        </select>
+        <button
+          className="fetch-button"
+          onClick={handleFetchBalances}
+          onMouseEnter={() => handleButtonHover("fetchBalances")}
+          onMouseLeave={() => handleButtonHover("")}
+        >
+          Fetch Balances
+        </button>
+        <button
+          className="fetch-button"
+          onClick={handleGetAllApproval}
+          onMouseEnter={() => handleButtonHover("fetchBalances")}
+          onMouseLeave={() => handleButtonHover("")}
+        >
+          Get All Approvals
+        </button>
+        <button
+          className="fetch-button"
+          onClick={handleGetTokenPricings}
+          onMouseEnter={() => handleButtonHover("getTokenPricings")}
+          onMouseLeave={() => handleButtonHover("")}
+        >
+          Get Token Pricings
+        </button>
+      </div>
+
+      <div className="table-main-class">
+        <table className="balance-table">
+          <thead>
+            <tr>
+              {response.length > 0 &&
+                Object.keys(response[0]).map((key) => <th key={key}>{key}</th>)}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {response.map((item, index) => (
+              <tr key={index}>
+                {Object.keys(item).map((key) => (
+                  <td key={key}>
+                    {Array.isArray(item[key]) ? (
+                      <ul>
+                        {item[key].map((subItem, subIndex) => (
+                          <li key={subIndex}>{JSON.stringify(subItem)}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      JSON.stringify(item[key])
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
