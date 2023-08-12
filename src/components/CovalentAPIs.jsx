@@ -5,17 +5,18 @@ import "../style/CovalentAPIs.css"; // Import the new CSS file
 function NewComponent() {
   const [response, setResponse] = useState([]);
   const [walletAddress, setWalletAddress] = useState("");
+  const [selectedNetwork, setSelectedNetwork] = useState("matic-mainnet"); // Default network selection
+  const [quoteCurrency, setQuoteCurrency] = useState(""); // State for quote currency input
+  const [contractAddress, setContractAddress] = useState(""); // State for contract address input
+  const [hoveredButton, setHoveredButton] = useState(""); // State to track hovered button
 
-  const fetchBalances = () => {
+  const fetchData = (url) => {
     const headers = {
       Authorization: "Bearer ckey_6702edeceef9404abb0bf0b6331",
     };
 
     axios
-      .get(
-        `https://api.covalenthq.com/v1/matic-mainnet/address/${walletAddress}/balances_nft/`,
-        { headers }
-      )
+      .get(url, { headers })
       .then((response) => {
         setResponse(response.data.data.items);
       })
@@ -24,44 +25,116 @@ function NewComponent() {
       });
   };
 
+  const handleNetworkChange = (e) => {
+    setSelectedNetwork(e.target.value);
+  };
+
+  const handleFetchBalances = () => {
+    const url = `https://api.covalenthq.com/v1/${selectedNetwork}/address/${walletAddress}/balances_nft/`;
+    fetchData(url);
+  };
+
+  const handleGetAllApproval = () => {
+    const url = `https://api.covalenthq.com/v1/${selectedNetwork}/approvals/${walletAddress}/`;
+    fetchData(url);
+  };
+
+  const handleGetTokenPricings = () => {
+    const url = `https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/${selectedNetwork}/${quoteCurrency}/${contractAddress}/`;
+    fetchData(url);
+  };
+
+  const handleQuoteCurrencyChange = (e) => {
+    setQuoteCurrency(e.target.value);
+  };
+
+  const handleContractAddressChange = (e) => {
+    setContractAddress(e.target.value);
+  };
+
+  const handleButtonHover = (buttonName) => {
+    setHoveredButton(buttonName);
+  };
+
   return (
     <div className="container">
-      <h1 className="dash-title">Let's Explore Covalent</h1>
-      <div className="form-container">
-        <div className="form-box">
-          <input
-            type="text"
-            className="input-field"
-            placeholder="Enter ETH Address"
-            onChange={(e) => setWalletAddress(e.target.value)}
-          />
-          <button className="fetch-button" onClick={fetchBalances}>
-            Fetch Balances
-          </button>
-        </div>
-        <table className="balance-table">
-          <thead>
-            <tr>
-              <th>Contract Name</th>
-              <th>Contract Symbol</th>
-              <th>Contract Address</th>
-              <th>Balance</th>
-              <th>Last Transferred At</th>
+      <h1 className="dash-title">Let's Explore The Power Of Covalent APIs</h1>
+
+      <input
+        type="text"
+        className={`input-field ${
+          hoveredButton === "fetchBalances" && "green-border"
+        }`}
+        placeholder="Enter ETH Address"
+        onChange={(e) => setWalletAddress(e.target.value)}
+      />
+      <input
+        type="text"
+        className={`input-field ${
+          hoveredButton === "getTokenPricings" && "green-border"
+        }`}
+        placeholder="Enter Quote Currency"
+        onChange={handleQuoteCurrencyChange}
+      />
+      <input
+        type="text"
+        className={`input-field ${
+          hoveredButton === "getTokenPricings" && "green-border"
+        }`}
+        placeholder="Enter Contract Address"
+        onChange={handleContractAddressChange}
+      />
+      <select
+        className="network-dropdown"
+        onChange={handleNetworkChange}
+        value={selectedNetwork}
+      >
+        <option value="matic-mainnet">Matic Mainnet</option>
+        <option value="eth-mainnet">Ethereum Mainnet</option>
+        {/* Add more options for other networks if needed */}
+      </select>
+      <button
+        className="fetch-button"
+        onClick={handleFetchBalances}
+        onMouseEnter={() => handleButtonHover("fetchBalances")}
+        onMouseLeave={() => handleButtonHover("")}
+      >
+        Fetch Balances
+      </button>
+      <button
+        className="fetch-button"
+        onClick={handleGetAllApproval}
+        onMouseEnter={() => handleButtonHover("fetchBalances")}
+        onMouseLeave={() => handleButtonHover("")}
+      >
+        Get All Approvals
+      </button>
+      <button
+        className="fetch-button"
+        onClick={handleGetTokenPricings}
+        onMouseEnter={() => handleButtonHover("getTokenPricings")}
+        onMouseLeave={() => handleButtonHover("")}
+      >
+        Get Token Pricings
+      </button>
+
+      <table className="balance-table">
+        <thead>
+          <tr>
+            {response.length > 0 &&
+              Object.keys(response[0]).map((key) => <th key={key}>{key}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {response.map((item, index) => (
+            <tr key={index}>
+              {Object.keys(item).map((key) => (
+                <td key={key}>{item[key]}</td>
+              ))}
             </tr>
-          </thead>
-          <tbody>
-            {response.map((balance) => (
-              <tr key={balance.contract_address}>
-                <td>{balance.contract_name}</td>
-                <td>{balance.contract_ticker_symbol}</td>
-                <td>{balance.contract_address}</td>
-                <td>{balance.balance}</td>
-                <td>{balance.last_transfered_at}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
