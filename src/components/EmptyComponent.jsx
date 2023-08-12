@@ -16,8 +16,7 @@ function EmptyComponent() {
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
             }}
           >
-            I want to know how many transactions have been processed on the BTTC
-            network?
+            How many total transactions for block 108019738
           </p>
           <p
             style={{
@@ -28,8 +27,7 @@ function EmptyComponent() {
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
             }}
           >
-            I want to know the total value of BTTC tokens that have been
-            transacted on the network?
+            And list all the transaction hashes
           </p>
           <p
             style={{
@@ -40,7 +38,7 @@ function EmptyComponent() {
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
             }}
           >
-            I want to know the average transaction fee for a BTTC transaction.?
+            Can you give me more information about the same block?
           </p>
         </div>
         <div style={{ width: "40%", display: "flex", flexDirection: "column" }}>
@@ -53,8 +51,7 @@ function EmptyComponent() {
               textAlign: "justify",
             }}
           >
-            I want to know how many transactions have been processed on the BTTC
-            network?
+            Works for Optimism Mainnet
           </p>
           <p
             style={{
@@ -65,8 +62,7 @@ function EmptyComponent() {
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
             }}
           >
-            I want to know the total value of BTTC tokens that have been
-            transacted on the network?
+            Continious chat querying
           </p>
           <p
             style={{
@@ -77,7 +73,7 @@ function EmptyComponent() {
               boxShadow: "0 0 8px 0 rgba(0, 0, 0, 0.25)",
             }}
           >
-            I want to know the average transaction fee for a BTTC transaction.?
+            Also support Covalent APIs
           </p>
         </div>
       </div>
