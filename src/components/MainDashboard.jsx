@@ -5,6 +5,7 @@ import EmptyComponent from "./EmptyComponent";
 import ChatLog from "./ChatLog";
 import MessageHistory from "./MessageHistory";
 import send from "../assets/send.png";
+import axios from "axios";
 
 const Dashboard = () => {
   const [newMessage, setNewMessage] = useState("");
@@ -17,21 +18,11 @@ const Dashboard = () => {
       messages.length > 0 &&
       messages[messages.length - 1].sender === "user"
     ) {
-      simulateBotResponse();
       // simulateBotResponse();
       setShowChatLog(true);
     }
   }, [messages]);
 
-  // const sendMessage = () => {
-  //   const userMessage = {
-  //     id: uuidv4(),
-  //     sender: "user",
-  //     text: newMessage,
-  //   };
-  //   setMessages((prevMessages) => [...prevMessages, userMessage]);
-  //   setNewMessage("");
-  // };
   const sendMessage = () => {
     if (newMessage.trim() !== "") {
       setIsLoading(true);
@@ -42,18 +33,11 @@ const Dashboard = () => {
       };
       setMessages((prevMessages) => [...prevMessages, userMessage]);
       setNewMessage("");
-    }
-  };
 
-  const simulateBotResponse = () => {
-    setTimeout(() => {
-      const botMessage = {
-        id: uuidv4(),
-        sender: "bot",
-        text: "I'm just a bot response.",
+      const requestData = {
+        user_prompt: newMessage,
       };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-    }, 1000);
+
       axios
         // .post("http://192.168.1.20:5002/get_answer", requestData, {
         .post("http://127.0.0.1:5002/get_answer", requestData, {
@@ -131,6 +115,9 @@ const Dashboard = () => {
     }
   };
 
+  const userPrompt = "Your user prompt here";
+  const requestData = { user_prompt: userPrompt };
+
   return (
     <div className="chat-app-container">
       <MessageHistory
@@ -171,4 +158,5 @@ const Dashboard = () => {
     </div>
   );
 };
+
 export default Dashboard;
