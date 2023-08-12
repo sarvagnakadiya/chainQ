@@ -5,7 +5,6 @@ import EmptyComponent from "./EmptyComponent";
 import ChatLog from "./ChatLog";
 import MessageHistory from "./MessageHistory";
 import send from "../assets/send.png";
-import axios from "axios";
 
 const Dashboard = () => {
   const [newMessage, setNewMessage] = useState("");
@@ -17,10 +16,20 @@ const Dashboard = () => {
       messages.length > 0 &&
       messages[messages.length - 1].sender === "user"
     ) {
+      simulateBotResponse();
       setShowChatLog(true);
     }
   }, [messages]);
 
+  // const sendMessage = () => {
+  //   const userMessage = {
+  //     id: uuidv4(),
+  //     sender: "user",
+  //     text: newMessage,
+  //   };
+  //   setMessages((prevMessages) => [...prevMessages, userMessage]);
+  //   setNewMessage("");
+  // };
   const sendMessage = () => {
     if (newMessage.trim() !== "") {
       const userMessage = {
@@ -30,41 +39,19 @@ const Dashboard = () => {
       };
       setMessages((prevMessages) => [...prevMessages, userMessage]);
       setNewMessage("");
-
-      const requestData = {
-        user_prompt: newMessage,
-      };
-
-      axios
-        .post("http://173.82.54.146:5001/get_answer", requestData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((response) => {
-          const botResponse = {
-            id: uuidv4(),
-            sender: "bot",
-            text: response.data.answer,
-          };
-          setMessages((prevMessages) => [...prevMessages, botResponse]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     }
   };
 
-  // const simulateBotResponse = () => {
-  //   setTimeout(() => {
-  //     const botMessage = {
-  //       id: uuidv4(),
-  //       sender: "bot",
-  //       text: "I'm just a bot response.",
-  //     };
-  //     setMessages((prevMessages) => [...prevMessages, botMessage]);
-  //   }, 1000);
-  // };
+  const simulateBotResponse = () => {
+    setTimeout(() => {
+      const botMessage = {
+        id: uuidv4(),
+        sender: "bot",
+        text: "I'm just a bot response.",
+      };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+    }, 1000);
+  };
 
   const handleDeleteMessage = (messageId) => {
     const messageIndex = messages.findIndex(
@@ -100,9 +87,6 @@ const Dashboard = () => {
       sendMessage();
     }
   };
-
-  const userPrompt = "Your user prompt here";
-  const requestData = { user_prompt: userPrompt };
 
   return (
     <div className="chat-app-container">
@@ -142,5 +126,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
 export default Dashboard;
