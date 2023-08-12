@@ -11,18 +11,21 @@ const Dashboard = () => {
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [showChatLog, setShowChatLog] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (
       messages.length > 0 &&
       messages[messages.length - 1].sender === "user"
     ) {
+      // simulateBotResponse();
       setShowChatLog(true);
     }
   }, [messages]);
 
   const sendMessage = () => {
     if (newMessage.trim() !== "") {
+      setIsLoading(true);
       const userMessage = {
         id: uuidv4(),
         sender: "user",
@@ -36,35 +39,40 @@ const Dashboard = () => {
       };
 
       axios
-        .post("http://173.82.54.146:5001/get_answer", requestData, {
+        // .post("http://192.168.1.20:5002/get_answer", requestData, {
+        .post("http://127.0.0.1:5002/get_answer", requestData, {
           headers: {
             "Content-Type": "application/json",
           },
         })
         .then((response) => {
-          const botResponse = {
-            id: uuidv4(),
-            sender: "bot",
-            text: response.data.answer,
-          };
-          setMessages((prevMessages) => [...prevMessages, botResponse]);
+          setTimeout(() => {
+            const botResponse = {
+              id: uuidv4(),
+              sender: "bot",
+              text: response.data.answer,
+            };
+            setMessages((prevMessages) => [...prevMessages, botResponse]);
+            setIsLoading(false);
+          }, 3000);
         })
         .catch((error) => {
           console.log(error);
+          setIsLoading(false);
         });
     }
   };
 
   // const simulateBotResponse = () => {
-  //   setTimeout(() => {
-  //     const botMessage = {
-  //       id: uuidv4(),
-  //       sender: "bot",
-  //       text: "I'm just a bot response.",
-  //     };
-  //     setMessages((prevMessages) => [...prevMessages, botMessage]);
-  //   }, 1000);
-  // };
+  // //   setTimeout(() => {
+  // //     const botMessage = {
+  // //       id: uuidv4(),
+  // //       sender: "bot",
+  // //       text: "I'm just a bot response.",
+  // //     };
+  // //     setMessages((prevMessages) => [...prevMessages, botMessage]);
+  // //   }, 1000);
+  // // };
 
   const handleDeleteMessage = (messageId) => {
     const messageIndex = messages.findIndex(
@@ -89,7 +97,13 @@ const Dashboard = () => {
   };
 
   const handleNewChatClick = () => {
-    setShowChatLog(false);
+    const confirmResult = window.confirm(
+      "Are you sure you want to start a new chat?"
+    );
+    if (confirmResult) {
+      setMessages([]);
+      setShowChatLog(false);
+    }
   };
 
   const isSendButtonDisabled = newMessage === "";
@@ -118,24 +132,26 @@ const Dashboard = () => {
             <EmptyComponent />
           ) : (
             <>
-              <ChatLog messages={messages} />
+              <ChatLog messages={messages} isLoading={isLoading} />
             </>
           )}
           <div className="chat-input">
-            <input
-              type="text"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder="Type your message..."
-            />
-            <button
-              onClick={sendMessage}
-              disabled={isSendButtonDisabled}
-              className="send-btn"
-            >
-              <img src={send} style={{ width: "20px" }}></img>
-            </button>
+            <div className="prompt-input-area">
+              <input
+                type="text"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                onKeyDown={handleKeyPress}
+                placeholder="Type your message..."
+              />
+              <button
+                onClick={sendMessage}
+                disabled={isSendButtonDisabled}
+                className="send-btn"
+              >
+                <img src={send} style={{ width: "20px" }}></img>
+              </button>
+            </div>
           </div>
         </div>
       </div>

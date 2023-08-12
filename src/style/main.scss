@@ -62,17 +62,40 @@
 input {
   height: 40px;
   padding: 5px;
+  width: 220%;
 }
 
+// .chat-input {
+//   display: flex;
+//   align-items: center;
+//   margin: 20px auto;
+//   width: 70%;
+//   border-radius: 10px;
+//   background-color: #09090b;
+//   position: relative;
+// }
+
 .chat-input {
+  // display: flex;
+  // align-items: center;
+  // margin: 20px auto;
+  // width: 70%;
+  // border-radius: 10px;
+  // background-color: #09090b;
+  // position: fixed; /* Change to fixed */
+  // bottom: 10px; /* Adjust the value to position it properly */
   display: flex;
   align-items: center;
   margin: 20px auto;
-  width: 70%;
+  width: 50%;
   border-radius: 10px;
   background-color: #09090b;
-  position: relative;
+  position: fixed;
+  bottom: 5%;
+  left: 35%;
 }
+
+
 
 input {
   flex: 1 1;
@@ -87,7 +110,7 @@ input {
   border-radius: 10px;
   padding: 5px 45px;
   color: li;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  // box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
 }
 
 .send-btn {
@@ -123,13 +146,15 @@ input {
 .chat-log {
   text-align: left;
   color: black;
+  max-height: 67.5vh;
+  overflow-x: hidden;
 }
 
 .chat-msg-center {
-  padding: 22px 40px;
+  padding: 17px 40px;
   display: flex;
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
   align-items: center;
 }
 
@@ -341,3 +366,43 @@ input {
   }
 }
 // .....................animation
+
+
+
+//........................loader
+$animationTime: 0.8s;
+$dotSize: 20px;
+
+.loader {
+    text-align: center;
+    
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        width: $dotSize;
+        height: $dotSize;
+        background: rgb(185, 180, 180);
+        border-radius: $dotSize;
+        animation: loader $animationTime infinite alternate;
+
+        &:nth-of-type(2) {
+            animation-delay: 0.2s;
+        }
+
+        &:nth-of-type(3) {
+            animation-delay: 0.6s;
+        }
+    }
+}
+
+@keyframes loader {
+    0% {
+        opacity: 0.9;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+}
+
