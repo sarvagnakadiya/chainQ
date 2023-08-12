@@ -7,6 +7,7 @@ function EmptyComponent() {
       <h1 className="dash-title">Let's Explore chainQ</h1>
       <div className="common-que-flex">
         <div style={{ width: "40%", flexDirection: "column", display: "flex" }}>
+          Prompts example
           <p
             style={{
               border: "1px solid lightgray",
@@ -42,6 +43,7 @@ function EmptyComponent() {
           </p>
         </div>
         <div style={{ width: "40%", display: "flex", flexDirection: "column" }}>
+          Features
           <p
             style={{
               border: "1px solid lightgray",

@@ -93,7 +93,8 @@ function NewComponent() {
           onChange={handleNetworkChange}
           value={selectedNetwork}
         >
-          <option value="matic-mainnet">Matic Mainnet</option>
+          <option value="optimism-mainnet">Optimism Mainnet</option>
+          <option value="matic-mainnet">Polygon Mainnet</option>
           <option value="eth-mainnet">Ethereum Mainnet</option>
           {/* Add more options for other networks if needed */}
         </select>
@@ -103,7 +104,7 @@ function NewComponent() {
           onMouseEnter={() => handleButtonHover("fetchBalances")}
           onMouseLeave={() => handleButtonHover("")}
         >
-          Fetch Balances
+          Fetch NFTs
         </button>
         <button
           className="fetch-button"
@@ -119,7 +120,7 @@ function NewComponent() {
           onMouseEnter={() => handleButtonHover("getTokenPricings")}
           onMouseLeave={() => handleButtonHover("")}
         >
-          Get Token Pricings
+          Get Token historical Pricings
         </button>
       </div>
 
