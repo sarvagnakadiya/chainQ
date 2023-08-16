@@ -2,7 +2,7 @@ import React from "react";
 import "../style/main.scss";
 import Navbar from "./Navbar";
 import hero from "../assets/hero.png";
-import arrow from "../assets/Arrow.png";
+// import arrow from "../assets/Arrow.png";
 import { useNavigate } from "react-router-dom";
 
 function Home() {

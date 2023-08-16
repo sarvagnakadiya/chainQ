@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "BeVietnamPro-Bold";
+  src: url("../public/BeVietnamPro-Bold.ttf");
+}
+@font-face {
+  font-family: "BeVietnamPro-Regular";
+  src: url("../public/BeVietnamPro-Regular.ttf");
+}
+@font-face {
+  font-family: "BeVietnamPro-SemiBold";
+  src: url("../public/BeVietnamPro-SemiBold.ttf");
+}

@@ -27,7 +27,14 @@
   display: inline-block;
   margin-right: 10px;
 }
-
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  height: 30vh;
+  justify-content: flex-end;
+}
 /* Fetch Buttons */
 .fetch-button {
   padding: 10px 20px;
