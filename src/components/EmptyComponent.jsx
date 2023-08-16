@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/main.scss";
-import arrow from "../assets/arrow.png";
+import arrow from "../assets/Arrow.png";
 
 function EmptyComponent() {
   return (

@@ -41,7 +41,7 @@ const Dashboard = () => {
 
       axios
         // .post("http://192.168.1.20:5002/get_answer", requestData, {
-        .post("http://173.82.54.146:5001/get_answer", requestData, {
+        .post("https://api.dehitas.xyz/get_answer", requestData, {
           headers: {
             "Content-Type": "application/json",
           },
