@@ -2,17 +2,31 @@ import React from "react";
 import "../style/main.scss";
 import arrow from "../assets/arrow.png";
 
-function EmptyComponent() {
+function EmptyComponent({ sendMessage, setNewMessage }) {
   return (
-    <div style={{ width: "70%", margin: "30px auto" }}>
+    <div style={{ width: "70%", margin: "10px auto" }}>
       <h1 className="dash-title">
-        Let's Explore <span style={{ color: "green" }}>ChainQ</span>
+        Let's Explore <span style={{ color: "#246aee" }}>ChainQ</span>
       </h1>
       <div className="common-que-flex">
         <div style={{ width: "50%", flexDirection: "column", display: "flex" }}>
-          Prompts example
-          <p className="empty-que">
-            How many total transactions for block 108019738?{" "}
+          <div
+            style={{
+              fontFamily: "BeVietnamPro-SemiBold",
+              fontSize: "20px",
+              paddingBottom: "20px",
+            }}
+          >
+            Prompts example
+          </div>
+          <p
+            className="empty-que"
+            onClick={() => {
+              setNewMessage("");
+              sendMessage();
+            }}
+          >
+            How many total transactions for block 108019738?
             <img src={arrow} style={{ width: "25px", padding: "10px" }}></img>
           </p>
           <p className="empty-que">

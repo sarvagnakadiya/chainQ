@@ -57,8 +57,18 @@ function NewComponent() {
   };
 
   return (
-    <div>
-      <h1 className="dash-title">Let's Explore The Power Of Covalent APIs</h1>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        minHeight: "50vh",
+        flexDirection: "column",
+      }}
+    >
+      <h1 className="dash-title">
+        Let's Explore The Power Of{" "}
+        <span style={{ color: "#246aee" }}>Covalent APIs</span>
+      </h1>
       <div className="container">
         <div className="input-row">
           <input

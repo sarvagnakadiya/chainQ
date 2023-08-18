@@ -174,7 +174,7 @@ input {
 }
 .empty-que {
   border: 1px solid lightgray;
-  padding: 20px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -282,7 +282,7 @@ input {
   justify-content: space-around;
 }
 .try-btn {
-  background-color: #202123;
+  background-color: #246aee;
   border: 1px solid #246aee;
   color: white;
   width: 30%;
@@ -291,8 +291,12 @@ input {
   letter-spacing: 2px;
   margin-top: 30px;
   border-radius: 10px;
+}
+.try-btn:hover {
   box-shadow: rgb(42, 35, 207) 0px 4px 24px -6px;
   transition: all 200ms ease 0s;
+  border: 1px solid #246aee;
+  background-color: #09090b;
 }
 // ..............navbar css...............
 

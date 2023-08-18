@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import icon from "../assets/favicon.png";
 import logo from "../assets/logo.png";
 import user from "../assets/user.jpg";
@@ -8,7 +9,10 @@ const ChatLog = ({ messages, isLoading }) => {
   return (
     <div className="chat-log-main">
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <img className="chat-log-title" src={logo} alt="Chat Log Title" />
+        <Link to="/">
+          {" "}
+          <img className="chat-log-title" src={logo} alt="Chat Log Title" />
+        </Link>
       </div>
 
       <div className="chat-log">
