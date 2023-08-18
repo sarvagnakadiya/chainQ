@@ -61,7 +61,7 @@ function NewComponent() {
       style={{
         display: "flex",
         justifyContent: "space-between",
-        minHeight: "50vh",
+
         flexDirection: "column",
       }}
     >
