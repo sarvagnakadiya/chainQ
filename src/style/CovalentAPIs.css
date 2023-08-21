@@ -28,7 +28,7 @@
   flex-direction: column;
   width: 80%;
   margin: 0 auto;
-  height: 30vh;
+  height: auto;
   justify-content: flex-end;
 }
 /* Fetch Buttons */
@@ -66,22 +66,28 @@
 
 /* Table Headings */
 .balance-table th {
-  padding: 8px;
-  text-align: left;
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
   border: 1px solid #dddddd;
   background-color: #282a2c; /* Slightly lighter than #202123 */
   color: white;
   font-weight: bold; /* Add bold font weight */
-  max-width: 120px; /* Limit the width of headings */
+  max-width: 200px; /* Limit the width of headings */
   word-wrap: break-word; /* Allow text to wrap within headings */
 }
 
 /* Table Cells */
 .balance-table td {
   padding: 8px;
-  text-align: left;
+  font-size: 13px;
+  text-align: center;
   border: 1px solid #dddddd;
   white-space: nowrap;
+}
+.balance-table td ul {
+  padding: 0px;
+  list-style-type: none;
 }
 
 /* Input row */
@@ -119,8 +125,8 @@
 
 /* Table main class for horizontal scrolling */
 .table-main-class {
-  overflow: hidden; /* Hide the default scrollbar */
   position: relative;
+  overflow: hidden;
 }
 
 /* Add a pseudo-element for the custom scrollbar track */
@@ -139,7 +145,7 @@
 /* Style the scrollbar thumb */
 .table-main-class::-webkit-scrollbar-thumb {
   background-color: rgba(20, 20, 20, 0.63); /* Adjust the color */
-  border-radius: 5px;
+  border-radius: 2px;
   width: 8px; /* Adjust the width for a thinner thumb */
 }
 
